@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Panel de Resumen NUAM</h2>
+<p>Bienvenido, {{ user.username }} 👋</p>
+
+<div class="row mt-4">
+  <div class="col-md-3">
+    <div class="card text-center mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Calificaciones</h5>
+        <a href="{% url 'lista' %}" class="btn btn-nuam">Gestionar</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card text-center mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Auditoría</h5>
+        <a href="{% url 'auditoria' %}" class="btn btn-nuam-green">Ver</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card text-center mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Usuarios</h5>
+        <a href="{% url 'usuarios' %}" class="btn btn-nuam">Ver</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card text-center mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Configuración</h5>
+        <a href="{% url 'config' %}" class="btn btn-nuam-gray">Opciones</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

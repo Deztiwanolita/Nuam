@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Bitácora de Auditoría</h2>
+<table class="table table-striped">
+  <thead class="table-dark">
+    <tr><th>Fecha</th><th>Usuario</th><th>Acción</th><th>Detalle</th></tr>
+  </thead>
+  <tbody>
+    {% for r in registros %}
+      <tr>
+        <td>{{ r.fecha|date:"d-m-Y H:i" }}</td>
+        <td>{{ r.usuario_creacion.username }}</td>
+        <td>CREAR_CALIFICACION</td>
+        <td>{{ r.instrumento.nombre }} - {{ r.periodo }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NUAM Calificaciones</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark mb-4">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="{% url 'dashboard' %}">NUAM Calificaciones</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        {% if user.is_authenticated %}
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="{% url 'lista' %}">Calificaciones</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'auditoria' %}">Auditoría</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'usuarios' %}">Usuarios</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'config' %}">Configuración</a></li>
+            <li class="nav-item ms-3">
+              <a href="{% url 'logout' %}" class="btn btn-light btn-sm">Salir ({{ user.username }})</a>
+            </li>
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    {% if messages %}
+      {% for m in messages %}
+        <div class="alert alert-info text-center">{{ m }}</div>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  <main class="container my-4">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="mt-5">
+    <p class="mb-0">
+      © NUAM 2025 – Proyecto académico desarrollado con Django.<br>
+    </p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
