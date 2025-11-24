@@ -1,18 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Usuarios del sistema</h2>
-<table class="table table-hover">
+
+<h2>👥 Usuarios del sistema</h2>
+
+<table class="table table-striped">
   <thead class="table-dark">
-    <tr><th>Nombre de usuario</th><th>Email</th><th>Activo</th></tr>
+    <tr><th>ID</th><th>Usuario</th><th>Email</th><th>Activo</th></tr>
   </thead>
   <tbody>
-    {% for u in usuarios %}
+  {% for u in usuarios %}
     <tr>
+      <td>{{ u.id }}</td>
       <td>{{ u.username }}</td>
-      <td>{{ u.email }}</td>
+      <td>{{ u.email|default:"—" }}</td>
       <td>{% if u.is_active %}Sí{% else %}No{% endif %}</td>
     </tr>
-    {% endfor %}
+  {% empty %}
+    <tr><td colspan="4" class="text-center">No hay usuarios registrados.</td></tr>
+  {% endfor %}
   </tbody>
 </table>
+
+<div class="section mt-4">
+  <a href="#" class="btn-nuam-blue">Crear usuario</a>
+  <a href="#" class="btn-nuam-blue">Editar usuario</a>
+  <a href="#" class="btn-nuam-blue">Administración de roles</a>
+</div>
+
 {% endblock %}

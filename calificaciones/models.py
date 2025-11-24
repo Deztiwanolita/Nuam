@@ -1,6 +1,7 @@
 from django.db import models
-
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 class Instrumento(models.Model):
@@ -20,9 +21,24 @@ class Calificacion(models.Model):
     fecha = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
-        # Calcular factor: monto / 100 como ejemplo
-        self.factor = self.monto / 100
+        es_nuevo = self.pk is None
+        self.factor = self.monto / 100  # cálculo del factor
         super().save(*args, **kwargs)
 
+        # Registrar acción en bitácora
+        from .models import Bitacora
+        accion = "CREAR" if es_nuevo else "MODIFICAR"
+        Bitacora.objects.create(
+            usuario=self.usuario_creacion,
+            accion=accion,
+            descripcion=f"Calificación {self.instrumento} ({self.periodo}) − monto {self.monto}"
+        )
+
+class Bitacora(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    accion = models.CharField(max_length=50)
+    descripcion = models.TextField(blank=True)
+    fecha = models.DateTimeField(auto_now_add=True)
+
     def __str__(self):
-        return f"{self.instrumento} – {self.periodo}"
+        return f"{self.usuario} - {self.accion} ({self.fecha:%d/%m/%Y %H:%M})"

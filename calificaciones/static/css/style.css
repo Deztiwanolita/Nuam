@@ -1,37 +1,26 @@
-/* ======= PALETA DE COLORES NUAM ======= */
 :root {
-  --nuam-orange: #ff4b00;       /* Naranja principal */
-  --nuam-orange-dark: #d93e00;  /* Naranja oscuro para hover */
-  --nuam-gray-dark: #3c3c3c;    /* Gris oscuro corporativo */
-  --nuam-gray-light: #f9f9f9;   /* Gris claro de fondo */
-  --nuam-green: #006b3c;        /* Verde opcional (éxito) */
+  --nuam-orange: #ff4b00;    
+  --nuam-orange-dark: #d93e00;
+  --nuam-gray-dark: #3c3c3c;  
+  --nuam-gray-light: #f9f9f9;  
+  --nuam-green: #006b3c;       
 }
 
-/* ======= BASE GENERAL ======= */
+
 body {
   background-color: var(--nuam-gray-light);
   color: #222;
   font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-/* ======= BARRA SUPERIOR ======= */
-.navbar {
-  background-color: var(--nuam-orange) !important;
-  border-bottom: 3px solid var(--nuam-orange-dark);
-}
-.navbar-brand {
-  font-weight: 700;
-  font-size: 1.2rem;
-}
-
-/* ======= TÍTULOS ======= */
 h1, h2, h3 {
   color: var(--nuam-orange-dark);
   font-weight: 700;
   margin-bottom: 0.5em;
 }
 
-/* Línea decorativa naranja bajo h2 */
 h2::after {
   content: "";
   display: block;
@@ -42,7 +31,15 @@ h2::after {
   border-radius: 2px;
 }
 
-/* ======= ENLACES ======= */
+.navbar {
+  background-color: var(--nuam-orange) !important;
+  border-bottom: 3px solid var(--nuam-orange-dark);
+}
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
 a {
   color: var(--nuam-orange-dark);
   text-decoration: none;
@@ -51,19 +48,38 @@ a:hover {
   color: var(--nuam-orange);
 }
 
-/* ======= BOTONES ======= */
-.btn-primary, .btn-nuam {
+.btn-nuam,
+.btn-primary {
   background-color: var(--nuam-orange);
   border-color: var(--nuam-orange);
   color: #fff;
 }
-.btn-primary:hover, .btn-nuam:hover {
+.btn-nuam:hover,
+.btn-primary:hover {
   background-color: var(--nuam-orange-dark);
   border-color: var(--nuam-orange-dark);
   color: #fff;
 }
 
-/* Botones de módulos adicionales */
+.btn-nuam-blue {
+  background-color: #4d73ff;
+  color: #fff !important;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+.btn-nuam-blue:hover {
+  background-color: #3356d1;
+}
+.btn-nuam-gray {
+  background-color: #6c757d;
+  color: #fff;
+}
+.btn-nuam-gray:hover {
+  background-color: #555;
+}
 .btn-nuam-green {
   background-color: var(--nuam-green);
   color: #fff;
@@ -72,16 +88,8 @@ a:hover {
   background-color: #004b29;
   color: #fff;
 }
-.btn-nuam-gray {
-  background-color: #6c757d;
-  color: #fff;
-}
-.btn-nuam-gray:hover {
-  background-color: #555;
-  color: #fff;
-}
 
-/* ======= TARJETAS DEL DASHBOARD ======= */
+
 .card {
   border-top: 4px solid var(--nuam-orange);
   background-color: #fff;
@@ -94,20 +102,47 @@ a:hover {
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
-/* ======= TABLAS ======= */
-.table-dark {
+.table-dark,
+.table-dark > th,
+.table-dark > td {
   background-color: var(--nuam-orange) !important;
   color: #fff !important;
+  border-color: var(--nuam-orange-dark) !important;
 }
 
-/* ======= MENSAJES INFO ======= */
+.table > :not(caption) > * > * {
+  border-color: var(--nuam-orange-dark) !important;
+}
+
+.table-nuam thead {
+  background-color: var(--nuam-orange);
+  color: #fff;
+}
+.table-nuam tbody tr:nth-child(even) {
+  background-color: #fff8f5;
+}
+.table-nuam tbody tr:hover {
+  background-color: #ffe5d6;
+}
+.table-nuam td,
+.table-nuam th {
+  border-color: var(--nuam-orange);
+}
+
+.section-orange {
+  background-color: var(--nuam-orange);
+  color: white;
+  padding: 40px 0;
+  text-align: center;
+  border-radius: 6px 6px 0 0;
+}
+
 .alert-info {
   background-color: #fcf1eb;
   border-left: 4px solid var(--nuam-orange);
   color: #333;
 }
 
-/* ======= PIE DE PÁGINA ======= */
 footer {
   background-color: var(--nuam-gray-dark);
   color: white;
@@ -115,4 +150,45 @@ footer {
   text-align: center;
   font-size: 0.9rem;
   margin-top: 40px;
+}
+
+
+table.table-dark thead tr th {
+  background-color: var(--nuam-orange) !important;
+  color: #fff !important;
+}
+
+table.table-dark thead {
+  background-color: var(--nuam-orange) !important;
+}
+
+table.table-dark tbody tr td {
+  border-color: var(--nuam-orange-dark) !important;
+}
+
+.table.table-dark > thead > tr > th {
+  background-color: var(--nuam-orange) !important;
+  color: #fff !important;
+  border-color: var(--nuam-orange-dark) !important;
+}
+
+.table.table-dark,
+.table.table-dark th,
+.table.table-dark thead th,
+.table.table-dark thead td,
+.table-dark > tr > th,
+.table-dark thead tr th {
+  background-color: var(--nuam-orange) !important;
+  color: #fff !important;
+  border-color: var(--nuam-orange-dark) !important;
+}
+
+.table-dark > :not(caption) > * {
+  background-color: var(--nuam-orange) !important;
+}
+
+.table-dark {
+  --bs-table-bg: var(--nuam-orange) !important;
+  --bs-table-color: #fff !important;
+  --bs-table-border-color: var(--nuam-orange-dark) !important;
 }

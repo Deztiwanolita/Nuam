@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>⚙️ Configuración</h2>
+<p>Usuario activo: <strong>{{ user.username }}</strong></p>
+
+  <a href="#" class="btn-nuam-blue">Preferencias</a>
+  <a href="{% url 'logout' %}" class="btn-nuam-blue">Cerrar sesión</a>
+</div>
+
+{% endblock %}

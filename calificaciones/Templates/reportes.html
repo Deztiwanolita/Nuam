@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>📈 Reportes del Sistema</h2>
+
+<div class="row mb-4">
+  <div class="col-md-4">
+    <div class="card text-center">
+      <div class="card-body">
+        <h4 class="card-title text-secondary">Total Calificaciones</h4>
+        <h1 class="text-nuam">{{ total_calificaciones }}</h1>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card text-center">
+      <div class="card-body">
+        <h4 class="card-title text-secondary">Calificaciones del Mes</h4>
+        <h1 class="text-nuam">{{ calificaciones_mes }}</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h4 class="mt-4">Detalle por Instrumento</h4>
+<table class="table table-striped">
+  <thead class="table-dark">
+    <tr><th>Instrumento</th><th>Total Calificaciones</th><th>Valor Acumulado</th></tr>
+  </thead>
+  <tbody>
+  {% for r in resumen %}
+    <tr>
+      <td>{{ r.instrumento__nombre }}</td>
+      <td>{{ r.total }}</td>
+      <td>{{ r.monto_total|floatformat:2 }}</td>
+    </tr>
+  {% empty %}
+    <tr><td colspan="3" class="text-center text-muted">Sin registros para mostrar</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+
+{% endblock %}

@@ -10,4 +10,6 @@ urlpatterns = [
     path('auditoria/', views.auditoria, name='auditoria'),
     path('usuarios/', views.usuarios, name='usuarios'),
     path('config/', views.configuracion, name='config'),
+    path('reportes/', views.reportes, name='reportes'),
+    path('bitacora/', views.ver_bitacora, name='bitacora'),
 ]

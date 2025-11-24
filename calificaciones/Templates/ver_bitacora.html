@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>🧾 Bitácora de Auditoría</h2>
+<table class="table table-striped">
+  <thead class="table-dark">
+    <tr><th>Fecha</th><th>Usuario</th><th>Acción</th><th>Descripción</th></tr>
+  </thead>
+  <tbody>
+    {% for r in registros %}
+      <tr>
+        <td>{{ r.fecha|date:"d/m/Y H:i" }}</td>
+        <td>{{ r.usuario.username }}</td>
+        <td>{{ r.accion }}</td>
+        <td>{{ r.descripcion }}</td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="4" class="text-center">Sin registros</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
